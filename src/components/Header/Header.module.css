@@ -1,0 +1,19 @@
+.header {
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+}
+
+.header__logoimg {
+
+    width: 100px;
+
+}
+
+.header__description {
+
+    margin: 0 50px;
+
+}

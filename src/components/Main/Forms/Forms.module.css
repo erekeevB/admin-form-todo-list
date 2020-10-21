@@ -1,0 +1,70 @@
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input {
+
+    margin: 15px 0;
+    border: none;
+    background-color: rgb(212, 212, 212);
+    width: 300px;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+}
+
+button {
+
+    margin: 15px 0;
+    width: 300px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    background-color: black;
+    text-align: center;
+
+}
+
+button span {
+
+    color: white;
+    font-size: 17px;
+    margin-left: 10px;
+
+}
+
+button svg {
+
+    fill: white;
+
+}
+
+.form__header {
+
+    text-align: center;
+    margin: 30px 0;
+
+}
+
+.form__inputName {
+
+    text-align: start;
+
+}
+
+.form {
+
+    width: 300px;
+    margin: 0 auto;
+
+}

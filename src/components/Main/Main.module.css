@@ -1,0 +1,23 @@
+.main {
+
+    background-color: blanchedalmond;
+
+}
+
+.main__grid {
+
+    width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    
+}
+
+.main__forms{
+
+    grid-row: 1 / -1;
+    align-self: center;
+    background-color: white;
+
+}
