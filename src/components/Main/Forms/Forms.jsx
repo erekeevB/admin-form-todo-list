@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import s from './Forms.module.css';
+import { connect } from 'react-redux';
+import { addUser } from '../../../redux/adminReducer';
 
-const Forms = () => {
+const Forms = (props) => {
+
+    let {canSubmit, setCanSubmit} = useState(true);
 
     return (
         <Formik
@@ -15,29 +19,33 @@ const Forms = () => {
 
                 if (!values.telNum) {
                     errors.telNum = 'Телефон нөміріңізді теріңіз!';
-                    debugger
                 }
 
                 return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    setSubmitting(false);
-                }, 400);
+                setSubmitting(true);
+                setCanSubmit(false);
+                alert(values.name.firstName + ' ' + values.name.secondName + ' ' + values.telNum);
+                props.addUser(values.name.firstName + ' ' + values.name.secondName + ' ' + values.telNum);
+                setSubmitting(false);
+                setTimeout(()=>setCanSubmit(true), 3000);
             }}
         >
             {({ isSubmitting }) => (
                 <Form className={s.form}>
                     <p className = {s.form__header}>Бағдарламаға қатысу үшін толтырыңыз</p>
-                    <p className = {s.form__inputName}>Аты Жөніңіз</p>
-                    <Field type="name.firstName" name="name.firstName" placeholder='input here' /><br/>
-                    <Field type="name.secondName" name="name.secondName" />
+                    <p className = {s.form__inputName}>Аты жөніңіз</p>
+                    <Field type="name.firstName" name="name.firstName" placeholder='Атыңыз' /><br/>
+                    <Field type="name.secondName" name="name.secondName" placeholder='Тегіңіз' />
                     <ErrorMessage className={s.error} name="name" component="div" />
 
-                    <p className = {s.form__inputName}>Телефон Нөміріңіз</p>
-                    <Field type="number" name="telNum" />
+                    <p className = {s.form__inputName}>Телефон нөміріңіз</p>
+                    <Field type="number" name="telNum" placeholder='Телефон нөміріңіз' maxlength="11" />
                     <ErrorMessage className={s.error} name="telNum" component="div" />
+
+                    {!canSubmit ? 
+                        <p className={s.error}>5 минуттан кейін қайталаңыз!</p> : null}
 
                     <div>
                         <button type="submit" disabled={isSubmitting}>
@@ -56,4 +64,4 @@ const Forms = () => {
 
 }
 
-export default Forms;
+export default connect(null, {addUser})(Forms);

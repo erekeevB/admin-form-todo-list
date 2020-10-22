@@ -1,5 +1,3 @@
-import { login, logout } from "../api/authAPI";
-
 const SET_AUTH = 'SET_AUTH';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const ADD_USER = 'ADD_USER';
@@ -38,7 +36,7 @@ const usersPageReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                users: [...users, action.user]
+                users: [...state.users, action.user]
             }
 
         default:
@@ -110,16 +108,18 @@ export const loginUserThunk = (email, password) => (dispatch) => {
 
 export const logoutThunk = () => (dispatch) => {
 
-    logout()
-        .then(data=>{
+    // logout()
+    //     .then(data=>{
 
-            if(data.resultCode === 0){
+    //         if(data.resultCode === 0){
 
-                dispatch(setAuth({ id: '', login: '', isAuth: 0 }));
+    //             dispatch(setAuth({ id: '', login: '', isAuth: 0 }));
 
-            }
+    //         }
 
-        })
+    //     })
+
+    dispatch(setAuth({ id: "", login: "", isAuth: 0 }));
 
 }
 
