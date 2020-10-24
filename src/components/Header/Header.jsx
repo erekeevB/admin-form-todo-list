@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './Header.module.css';
 import mainLogo from '../../assets/logos/mainLogo.png';
+import Admin from '../Admin/Admin';
+import { NavLink } from 'react-router-dom';
 
 const Header = (props) => {
 
@@ -19,11 +21,12 @@ const Header = (props) => {
                 <h3>Әділет басқармасында тіркелген мекеме</h3>
 
             </div>
-            <div>
+            <div className={s.header__contacts}>
 
                 <h2>8(700) 130-85-85</h2>
 
             </div>
+            <NavLink to='/admin'>Кіру</NavLink>
 
         </header>
 

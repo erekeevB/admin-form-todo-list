@@ -6,45 +6,48 @@ const Login = (props) => {
 
     return (
 
-        <Formik
-            initialValues={{ email: '', password: ''}}
-            validate={values => {
-                const errors = {};
-                if (!values.name.firstName || !values.name.secondName) {
-                    errors.name = 'Аты Жөніңізді теріңіз!';
-                }
+        <div className={s.login__formsParent}>
+            <div className={s.login__forms}>
+                <Formik
+                    initialValues={{ email: '', password: '' }}
+                    validate={values => {
+                        const errors = {};
+                        if (!values.email) {
+                            errors.name = 'Login Required!';
+                        }
 
-                if (!values.telNum) {
-                    errors.telNum = 'Телефон нөміріңізді теріңіз!';
-                }
+                        if (!values.password) {
+                            errors.telNum = 'Password Required!';
+                        }
 
-                return errors;
-            }}
-            onSubmit={(values, { setSubmitting }) => {
-                setSubmitting(true);
-                // alert(JSON.stringify(values, null, 2));
-                props.loginUserThunk();
-                setSubmitting(false);
-            }}
-        >
-            {({ isSubmitting }) => (
-                <Form className={s.form}>
-                    <p className = {s.form__header}>LOGIN</p>
-                    <p className = {s.form__inputName}>E-mail</p>
-                    <Field type="email" name="email" placeholder='e-mail' />
-                    <ErrorMessage className={s.error} name="email" component="div" />
-                    <p className = {s.form__inputName}>Password</p>
-                    <Field type="password" name="password" placeholder='password' />
-                    <ErrorMessage className={s.error} name="password" component="div" />
+                        return errors;
+                    }}
+                    onSubmit={(values, { setSubmitting }) => {
+                        setSubmitting(true);
+                        // alert(JSON.stringify(values, null, 2));
+                        props.loginUserThunk(values);
+                    }}
+                >
+                    {({ isSubmitting }) => (
+                        <Form className={s.login}>
+                            <p className={s.login__header}>LOGIN</p>
+                            <p className={s.login__inputName}>E-mail</p>
+                            <Field type="email" name="email" placeholder='e-mail' />
+                            <ErrorMessage className={s.error} name="email" component="div" />
+                            <p className={s.login__inputName}>Password</p>
+                            <Field type="password" name="password" placeholder='password' />
+                            <ErrorMessage className={s.error} name="password" component="div" />
 
-                    <div>
-                        <button type="submit" disabled={isSubmitting}>
-                                <span>Login</span>
-                        </button>
-                    </div>
-                </Form>
-            )}
-        </Formik>
+                            <div>
+                                <button type="submit" disabled={isSubmitting}>
+                                    <span>Login</span>
+                                </button>
+                            </div>
+                        </Form>
+                    )}
+                </Formik>
+            </div>
+        </div>
 
     )
 

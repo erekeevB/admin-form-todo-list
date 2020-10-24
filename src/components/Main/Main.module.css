@@ -8,6 +8,11 @@ h1, h2, h3{
 
     background-color: blanchedalmond;
 
+    background-image: url('../../assets/background/house-wallpaper-hd-1920x1200-490228.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 
 .main__grid {
@@ -26,6 +31,13 @@ h1, h2, h3{
     grid-row: 1 / -1;
     align-self: center;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 10px;
+
+}
+
+.main__text {
+
+    margin: 0;
+    color: white;
 
 }

@@ -1,0 +1,117 @@
+.login input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+.login input::-webkit-outer-spin-button,
+.login input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.login input {
+
+    margin: 15px 0;
+    padding: 0 15px;
+    border: none;
+    background-color: rgb(212, 212, 212);
+    width: 300px;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+}
+
+.login button {
+
+    margin-bottom: 15px;
+    width: 330px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    background-color: black;
+    text-align: center;
+
+}
+
+.login button span {
+
+    color: white;
+    font-size: 17px;
+    margin-left: 10px;
+
+}
+
+.login button svg {
+
+    fill: white;
+
+}
+
+.login__header {
+
+    text-align: center;
+    padding: 25px 0;
+    margin: 0;
+    font-size: 20px;
+
+}
+
+.login__inputName {
+
+    text-align: start;
+    margin: 0;
+    font-weight: 700;
+
+}
+
+.login {
+
+    width: 330px;
+    margin: 0 auto;
+
+}
+
+.error {
+
+    margin: 0;
+    margin-bottom: 15px;
+    color: red;
+    font-weight: 400;
+
+}
+
+.login button:active {
+    transform: scale(0.95);
+    outline: 0;
+}
+
+.login__forms{
+
+    position: absolute;
+    width: 390px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 15px;
+
+}
+
+.adminLoginPage {
+
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+
+}
+
+.adminPage {
+
+    margin: 0;
+    height: 100vh;
+    background-color: white;
+
+}

@@ -1,5 +1,6 @@
 .header {
 
+    height: 130px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,13 +10,21 @@
 
 .header__logoimg {
 
+    height: 100px;
     width: 100px;
 
 }
 
 .header__description {
 
+    height: 100px;
     margin: 0;
     justify-self: start;
+
+}
+
+.header__contacts {
+
+    height: 100px;
 
 }

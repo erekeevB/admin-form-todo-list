@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loginUserThunk } from '../../redux/adminReducer';
 import Login from './Login'
+import s from './Admin.module.css'
 
 const Admin = (props) => {
 
@@ -9,15 +10,21 @@ const Admin = (props) => {
 
         <>
 
-            {!props.isAuth ? 
+            {!props.isAuth ?
 
-                <Login loginUserThunk = {props.loginUserThunk} /> :
+                <div className={s.adminLoginPage}>
 
-                <div>
+                    <Login loginUserThunk={props.loginUserThunk} />
+
+                </div> :
+
+                <div className={s.adminPage}>
+
+                    <p>Адамдар список</p>
 
                     {props.users && props.users.map((el) => {
 
-                        return <div>{el}</div>
+                        return <p className={s.userListItems}>{el}</p>
 
                     })}
 
@@ -40,4 +47,4 @@ const mStP = (state) => {
 
 }
 
-export default connect(mStP, {loginUserThunk})(Admin);
+export default connect(mStP, { loginUserThunk })(Admin);

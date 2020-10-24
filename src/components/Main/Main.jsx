@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './Main.module.css';
 import mainLogo from '../../assets/logos/mainLogo.png';
-import Forms from './Forms/Forms';
 import Lists from '../Lists/Lists';
+import Forms from './Forms/Forms';
 
 const Main = () => {
 
@@ -10,7 +10,7 @@ const Main = () => {
 
         <div className={s.main}>
 
-            <div>
+            <div className={s.main__text}>
 
                 <h1>Баспананы бөліп төлеп алу</h1>
                 <h2>Бастапқы жарнасыз, табысты растаусыз, несие тарихы маңызды емес</h2>
@@ -23,10 +23,10 @@ const Main = () => {
                         <Forms />
                     </div>
 
-                    <Lists className={s.main__list1} id='1' headline='AAAAA' description='EEEEEEEEEE' />
-                    <Lists className={s.main__list2} id='2' headline='BBBBBB' description='EEEEEEEEEE' />
-                    <Lists className={s.main__list3} id='3' headline='CCCCCCC' description='EEEEEEEEEE' />
-                    <Lists className={s.main__list4} id='4' headline='DDDDDDD' description='EEEEEEEEEE' />
+                    <Lists className={s.main__text} id='1' headline='AAAAA' description='EEEEEEEEEE' />
+                    <Lists className={s.main__text} id='2' headline='BBBBBB' description='EEEEEEEEEE' />
+                    <Lists className={s.main__text} id='3' headline='CCCCCCC' description='EEEEEEEEEE' />
+                    <Lists className={s.main__text} id='4' headline='DDDDDDD' description='EEEEEEEEEE' />
 
                 </div>
 
