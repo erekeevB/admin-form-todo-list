@@ -8,30 +8,40 @@ h1, h2, h3{
 
     background-color: blanchedalmond;
 
-    background-image: url('../../assets/background/house-wallpaper-hd-1920x1200-490228.png');
+    background-image: url('../../assets/background/background_house.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    padding-bottom: 50px;
 
 }
 
 .main__grid {
 
-    width: 1000px;
+    width: 1200px;
+    height: 500px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     
 }
 
 .main__forms{
 
-    width: 390px;
+    width: 400px;
     grid-row: 1 / -1;
-    align-self: center;
+    align-self: start;
     background-color: white;
     border-radius: 10px;
+
+}
+
+.main__list {
+
+    margin: 0;
+    color: white;
+    text-align: start;
 
 }
 
@@ -39,5 +49,23 @@ h1, h2, h3{
 
     margin: 0;
     color: white;
+
+}
+
+.main__text h1 {
+
+    font-family: 'Piazzolla', serif;
+    font-stretch: wider;
+    font-size: 60px;
+    padding-top: 100px;
+    font-weight: 500;
+
+}
+
+.main__text h2 {
+
+    font-size: 18px;
+    margin: 20px 0 60px 0;
+    font-weight: 400;
 
 }

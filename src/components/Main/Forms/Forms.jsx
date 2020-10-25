@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import s from './Forms.module.css';
 import { connect } from 'react-redux';
-import { addUser } from '../../../redux/adminReducer';
+import { addUserThunk } from '../../../redux/membersPage';
 
 const Forms = (props) => {
 
@@ -22,8 +22,13 @@ const Forms = (props) => {
                 return errors;
             }}
             onSubmit={(values, { setSubmitting, resetForm }) => {
+                let member = {
+                    name: values.name.firstName,
+                    surname: values.name.secondName,
+                    number: values.telNum
+                }
                 setSubmitting(true);
-                props.addUser(values.name.firstName + ' ' + values.name.secondName + ' ' + values.telNum);
+                props.addUserThunk(member);
                 setSubmitting(false);
                 resetForm({});
             }}
@@ -57,4 +62,4 @@ const Forms = (props) => {
 
 }
 
-export default connect(null, {addUser})(Forms);
+export default connect(null, {addUserThunk})(Forms);

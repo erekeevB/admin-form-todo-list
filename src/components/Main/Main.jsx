@@ -23,10 +23,18 @@ const Main = () => {
                         <Forms />
                     </div>
 
-                    <Lists className={s.main__text} id='1' headline='AAAAA' description='EEEEEEEEEE' />
-                    <Lists className={s.main__text} id='2' headline='BBBBBB' description='EEEEEEEEEE' />
-                    <Lists className={s.main__text} id='3' headline='CCCCCCC' description='EEEEEEEEEE' />
-                    <Lists className={s.main__text} id='4' headline='DDDDDDD' description='EEEEEEEEEE' />
+                    <Lists className={s.main__list} id='1' 
+                        headline='Өтініш толтырып жіберіңіз' 
+                        description='Сізге біздің менеджер хабарласады' />
+                    <Lists className={s.main__list} id='2' 
+                        headline='Құжаттармен танысу' 
+                        description='Сіздің нөміріңізге құжаттар жіберіледі' />
+                    <Lists className={s.main__list} id='3' 
+                        headline='Келісім шартқа отыру' 
+                        description='Толық ақпарат алып, құжаттармен тарысқан соң келісім шартқа отырасыз' />
+                    <Lists className={s.main__list} id='4' 
+                        headline='Қорға салу' 
+                        description='Келісім шартта көрсетілген шотқа төлем жасайсыз' />
 
                 </div>
 

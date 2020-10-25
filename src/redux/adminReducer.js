@@ -1,18 +1,18 @@
+import { getMe, login, logout } from "../api/adminApi";
+
 const SET_AUTH = 'SET_AUTH';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-const ADD_USER = 'ADD_USER';
 
 let initialState = {
 
-    id: '',
-    login: '',
+    username: '',
     isAuth: 0,
     isFetching: false,
-    users: []
+    error: ''
 
 }
 
-const usersPageReducer = (state = initialState, action) => {
+const adminReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
@@ -32,13 +32,6 @@ const usersPageReducer = (state = initialState, action) => {
             }
 
         }
-        case ADD_USER:
-
-            return {
-                ...state,
-                users: [...state.users, action.user]
-            }
-
         default:
             return state;
 
@@ -50,77 +43,68 @@ export const setAuth = (profile) => ({ type: SET_AUTH, profile });
 
 export const toggleFetch = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
-export const addUser = (user) => ({ type: ADD_USER, user });
+export const getSetAuth = () => async (dispatch) => {
 
-export const getSetAuth = () => (dispatch) => {
+    dispatch(toggleFetch(true));
 
-    // dispatch(toggleFetch(true));
+    let data = await getMe()
 
-    // getMe()
-    //     .then((data) => {
+    dispatch(toggleFetch(false));
 
-    //         dispatch(toggleFetch(false));
+    if (!data.error) {
+        let profile = {
+            username: data.username,
+            email: data.email,
+            isAuth: 1
+        };
+        dispatch(setAuth(profile));
 
-    //         if (data.resultCode === 0) {
+    } else {
 
-    //             let profile = {
-    //                 id: data.data.id,
-    //                 login: data.data.login,
-    //                 email: data.data.email,
-    //                 isAuth: 1
-    //             };
-    //             dispatch(setAuth(profile));
+        console.log(data.error + ' get me')
+        dispatch(setAuth({ username: '', isAuth: 0, error: data.error }));
 
-    //         } else {
-
-    //             dispatch(setAuth({ id: '', login: '', email: '', isAuth: 0 }));
-
-    //         }
-
-    //     })
-
-    dispatch(setAuth({ id: 12166, login: "Dossym", isAuth: 1 }));
+    }
 
 }
 
-export const loginUserThunk = (email, password) => (dispatch) => {
+export const loginUserThunk = ({username, password}) => (dispatch) => {
+    
+    login(username, password)
+        .then(data => {
+            if (!data.error) {
 
-    // login(email, password)
-    //     .then(data => {
+                dispatch(setAuth({username: data.username, isAuth: 1, error: ''}));
 
-    //         debugger
-            
-    //         if (data.resultCode === 0 && data.userId === 12166) {
+            } else {
 
-    //             dispatch(setAuth({ id: data.userId, login: "Dossym", isAuth: 1 }));
+                console.log(data.error + ' login')
+                dispatch(setAuth({ username: '', isAuth: 0, error: data.error }));
 
-    //         } else {
+            }
 
-    //             logout();
-
-    //         }
-
-    //     })
-
-    dispatch(setAuth({ id: 12166, login: "Dossym", isAuth: 1 }));
+        })
 
 }
 
 export const logoutThunk = () => (dispatch) => {
+    
+    logout()
+        .then(data => {
 
-    // logout()
-    //     .then(data=>{
+            if (!data.error) {
 
-    //         if(data.resultCode === 0){
+                dispatch(setAuth({ username: '', isAuth: 0, error: '' }));
 
-    //             dispatch(setAuth({ id: '', login: '', isAuth: 0 }));
+            } else {
 
-    //         }
+                console.log(data.error + ' logout')
+                dispatch(setAuth({ username: '', isAuth: 0, error: data.error }));
 
-    //     })
+            }
 
-    dispatch(setAuth({ id: "", login: "", isAuth: 0 }));
+        })
 
 }
 
-export default usersPageReducer;
+export default adminReducer;
