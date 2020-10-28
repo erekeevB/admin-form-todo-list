@@ -1,8 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import s from './Forms.module.css';
-import { connect } from 'react-redux';
-import { addUserThunk } from '../../../redux/membersPage';
 
 const Forms = (props) => {
 
@@ -13,10 +11,12 @@ const Forms = (props) => {
                 const errors = {};
                 if (!values.name.firstName || !values.name.secondName) {
                     errors.name = 'Аты Жөніңізді теріңіз!';
+                    props.setError(true);
                 }
 
                 if (!values.telNum) {
                     errors.telNum = 'Телефон нөміріңізді теріңіз!';
+                    props.setError(true);
                 }
 
                 return errors;
@@ -62,4 +62,4 @@ const Forms = (props) => {
 
 }
 
-export default connect(null, {addUserThunk})(Forms);
+export default Forms;

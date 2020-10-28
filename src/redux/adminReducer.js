@@ -1,14 +1,15 @@
-import { getMe, login, logout } from "../api/adminApi";
+import { login, logout } from "../api/adminApi";
+import { setUsers } from "./membersPage";
 
 const SET_AUTH = 'SET_AUTH';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+const SET_TOKEN = 'SET_TOKEN';
 
 let initialState = {
 
-    username: '',
-    isAuth: 0,
     isFetching: false,
-    error: ''
+    error: '',
+    token: ''
 
 }
 
@@ -32,6 +33,13 @@ const adminReducer = (state = initialState, action) => {
             }
 
         }
+        case SET_TOKEN:
+            
+            return {
+                ...state,
+                token: action.token
+            }
+
         default:
             return state;
 
@@ -43,65 +51,41 @@ export const setAuth = (profile) => ({ type: SET_AUTH, profile });
 
 export const toggleFetch = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
-export const getSetAuth = () => async (dispatch) => {
+export const getToken = () => ({type: SET_TOKEN, token: localStorage.getItem('token')});
 
-    dispatch(toggleFetch(true));
-
-    let data = await getMe()
-
-    dispatch(toggleFetch(false));
-
-    if (!data.error) {
-        let profile = {
-            username: data.username,
-            email: data.email,
-            isAuth: 1
-        };
-        dispatch(setAuth(profile));
-
-    } else {
-
-        console.log(data.error + ' get me')
-        dispatch(setAuth({ username: '', isAuth: 0, error: data.error }));
-
-    }
-
-}
-
-export const loginUserThunk = ({username, password}) => (dispatch) => {
-    
-    login(username, password)
+export const loginUserThunk = ({username, password}) => async (dispatch) => {
+    const loginpromise = await login(username, password)
         .then(data => {
+            
             if (!data.error) {
 
-                dispatch(setAuth({username: data.username, isAuth: 1, error: ''}));
+                debugger
+                localStorage.setItem('token', data.key);
+                dispatch(setAuth({error: '', token: data.key}));
 
             } else {
 
+                localStorage.removeItem('token');
                 console.log(data.error + ' login')
-                dispatch(setAuth({ username: '', isAuth: 0, error: data.error }));
+                dispatch(setAuth({ error: data.error, token: '' }));
 
             }
 
         })
 
+    return loginpromise
+
 }
 
-export const logoutThunk = () => (dispatch) => {
+export const logoutThunk = (token) => (dispatch) => {
     
-    logout()
+    logout(token)
         .then(data => {
 
-            if (!data.error) {
-
-                dispatch(setAuth({ username: '', isAuth: 0, error: '' }));
-
-            } else {
-
-                console.log(data.error + ' logout')
-                dispatch(setAuth({ username: '', isAuth: 0, error: data.error }));
-
-            }
+            localStorage.removeItem('token');
+            console.log(data.error + ' logout')
+            dispatch(setAuth({ error: '', token: '' }));
+            dispatch(setUsers([]))
 
         })
 

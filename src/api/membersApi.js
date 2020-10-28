@@ -1,18 +1,24 @@
-import * as axios from 'axios';
-
-const customAxios = axios.create({
-    
-    baseURL: 'http://localhost:8000/api/'
-
-})
+import customAxios from './axiosCreator';
 
 export const addMember = (member) => {
-    return customAxios.post('members/create', {member}).then(response => response.data);
+
+    return customAxios.post('api/create/', {...member}).then(response => response.data);
 
 }
 
-export const getAllMembers = (username, password) => {
+export const deleteMember = (id) => {
 
-    return customAxios.get('members/list').then(response => response.data);
+    return customAxios.post('api/'+ id +'/delete/').then(response => response.data);
+
+}
+
+export const getAllMembers = (token) => {
+
+    debugger
+    return customAxios.get('api/', {
+        headers: {
+            "Content-Type" : "application/json",
+            Authorization: "Token " + token}})
+        .then(response => response.data);
 
 }

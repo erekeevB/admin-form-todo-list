@@ -1,24 +1,12 @@
-import * as axios from 'axios';
-
-const customAxios = axios.create({
-
-    baseURL: 'http://localhost:8000/api/'
-
-})
-
-export const getMe = () => {
-    return customAxios.get('me').then(response => response.data);
-
-}
+import customAxios from './axiosCreator';
 
 export const login = (username, password) => {
 
-    return customAxios.post('login', {username, password}).then(response => response.data);
+    return customAxios.post('rest-auth/login/', {username: username, password: password}).then(response => response.data);
 
 }
 
 export const logout = () => {
-
-    return customAxios.get('logout').then(response => response.data);
+    return customAxios.post('rest-auth/logout/', {}).then(response => response.data);
 
 }

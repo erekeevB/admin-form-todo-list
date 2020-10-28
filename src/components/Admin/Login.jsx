@@ -1,56 +1,58 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import React from 'react';
-import s from './Admin.module.css'
+import { connect } from 'react-redux';
+import { getToken, loginUserThunk, logoutThunk } from '../../redux/adminReducer';
+import LoginForm from './LoginForm'
+import { Redirect, withRouter } from 'react-router-dom';
 
-const Login = (props) => {
+class Login extends React.Component {
 
-    return (
+    componentDidMount(){
 
-        <div className={s.login__formsParent}>
-            <div className={s.login__forms}>
-                <Formik
-                    initialValues={{ username: '', password: '' }}
-                    validate={values => {
-                        const errors = {};
-                        if (!values.username) {
-                            errors.username = 'Username Required!';
-                        }
+        this.props.getToken();
 
-                        if (!values.password) {
-                            errors.password = 'Password Required!';
-                        }
+    }
 
-                        return errors;
-                    }}
-                    onSubmit={(values, { setSubmitting }) => {
-                        setSubmitting(true);
-                        props.loginUserThunk(values);
-                        props.getSetUsersThunk(values);
-                    }}
-                >
-                    {({ isSubmitting }) => (
-                        <Form className={s.login}>
-                            <p className={s.login__header}>LOGIN</p>
-                            <p className={s.login__inputName}>Username</p>
-                            <Field type="username" name="username" placeholder='Username' />
-                            <ErrorMessage className={s.error} name="email" component="div" />
-                            <p className={s.login__inputName}>Password</p>
-                            <Field type="password" name="password" placeholder='Password' />
-                            <ErrorMessage className={s.error} name="password" component="div" />
+    render() {
 
-                            <div>
-                                <button type="submit" disabled={isSubmitting}>
-                                    <span>Login</span>
-                                </button>
-                            </div>
-                        </Form>
-                    )}
-                </Formik>
-            </div>
-        </div>
+        return (
 
-    )
+            <>
+
+                {!this.props.token ?
+
+
+                    <LoginForm 
+                        loginUserThunk={this.props.loginUserThunk}
+                        error = {this.props.error} 
+                    /> :
+
+                    <Redirect to='/profile' />
+
+                }
+
+            </>
+
+        )
+    }
 
 }
 
-export default Login
+const mStP = (state) => {
+
+    return {
+
+        error: state.adminPage.error,
+        token: state.adminPage.token
+
+    }
+
+}
+
+export default withRouter(connect(mStP,
+    { 
+        loginUserThunk, 
+        logoutThunk, 
+        getToken
+
+    })
+     (Login));

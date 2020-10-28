@@ -7,6 +7,13 @@
     -webkit-appearance: none;
 }
 
+.form {
+
+    width: 340px;
+    margin: 0 30px;
+
+}
+
 .form input {
 
     margin: 15px 0 20px 0;
@@ -65,13 +72,6 @@
     text-align: start;
     margin: 0;
     font-weight: 700;
-
-}
-
-.form {
-
-    width: 340px;
-    margin: 0 auto;
 
 }
 

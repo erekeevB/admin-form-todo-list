@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './Header.module.css';
-import mainLogo from '../../assets/logos/mainLogo.png';
-import Admin from '../Admin/Admin';
+import mainLogo from '../../assets/icons/mainlogo/mainLogo.png';
 import { NavLink } from 'react-router-dom';
 
 const Header = (props) => {
@@ -26,7 +25,7 @@ const Header = (props) => {
                 <h2>8(700) 130-85-85</h2>
 
             </div>
-            <NavLink to='/admin'>Кіру</NavLink>
+            <NavLink className={s.header__login} to='/login'>Кіру</NavLink>
 
         </header>
 

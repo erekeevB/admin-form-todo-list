@@ -1,10 +1,12 @@
 import { addMember, getAllMembers } from "../api/membersApi";
 const ADD_USER = 'ADD_USER';
 const SET_MEMBERS = 'SET_MEMBERS';
+const TOGGLE_ERROR = 'TOGGLE_ERROR';
 
 let initialState = {
 
-    members: []
+    members: [],
+    error: 0,
 
 }
 
@@ -19,12 +21,15 @@ const membersReducer = (state = initialState, action) => {
             }
 
         case SET_MEMBERS:
-        debugger
-        return {
-            ...state,
-            members: action.members
-        }
-
+            return {
+                ...state,
+                members: action.members
+            }
+        case TOGGLE_ERROR:
+            return {
+                ...state,
+                error: action.bool
+            }
         default:
             return state;
 
@@ -35,6 +40,8 @@ const membersReducer = (state = initialState, action) => {
 export const setUsers = (members) => ({type: SET_MEMBERS, members})
 
 export const addUser = (member) => ({ type: ADD_USER, member });
+
+export const setError = (bool) => ({type: TOGGLE_ERROR, bool})
 
 export const addUserThunk = (member) => (dispatch) => {
     
@@ -51,9 +58,10 @@ export const addUserThunk = (member) => (dispatch) => {
 
 }
 
-export const getSetUsersThunk = () => (dispatch) => {
+export const getSetUsersThunk = (token) => (dispatch) => {
 
-    getAllMembers()
+    debugger
+    getAllMembers(token)
         .then(data => {
             debugger
             if(!data.error){

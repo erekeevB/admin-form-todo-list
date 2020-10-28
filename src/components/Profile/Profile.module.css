@@ -1,0 +1,81 @@
+.adminPage__header{
+
+    display: flex;
+    align-items: center;
+
+}
+
+.adminPage__header h2{
+
+    font-size: 20px;
+    text-align: center;
+    flex-grow: 1;
+
+}
+
+.redirect, .logout {
+
+    font-size: 20px;
+    text-align: center;
+    width: 150px;
+    height: 60px;
+    padding-top: 40px;
+    text-decoration: none;
+    color: black;
+
+}
+
+.redirect:hover, .logout:hover{
+
+    color: white;
+    background-color: black;
+
+}
+
+.userlist {
+
+    padding: 20px;
+    border: 3px solid black;
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 60px;
+
+}
+
+.userlist__info {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    font-size: 20px;
+    padding: 20px 0;
+    
+}
+
+.uselist__row {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: start;
+    align-items: center;
+    font-size: 18px;
+
+}
+
+.userlist__name, .userlist__surname, .userlist__number {
+
+    padding: 5px 0;
+    width: 250px;
+    margin: 0 auto;
+    border-bottom: 2px solid gray;
+
+}
+
+.adminPage {
+
+    margin: 0;
+    height: 100vh;
+    background-color: white;
+
+}

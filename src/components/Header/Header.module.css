@@ -1,10 +1,17 @@
 .header {
 
-    height: 130px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 110px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     flex-direction: row;
+
+}
+
+.header__logo {
+
+    margin-right: 30px;
 
 }
 
@@ -17,14 +24,58 @@
 
 .header__description {
 
-    height: 100px;
+    height: fit-content;
     margin: 0;
-    justify-self: start;
+    justify-self: center;
+    flex-grow: 1;
+
+}
+
+.header__description h2 {
+
+    font-size: 20px;
+
+}
+
+.header__description h3 {
+
+    font-size: 16px;
+    color: rgb(0, 72, 207);
 
 }
 
 .header__contacts {
 
-    height: 100px;
+    height: fit-content;
+
+}
+
+.header__contacts h2 {
+
+    font-size: 16px;
+
+}
+
+.header__login{
+    text-decoration: none;
+}
+
+@media only screen and (min-width: 767px) and (max-width: 1200px) {
+
+    .header {
+
+        max-width: 700px;
+    
+    }
+
+}
+
+@media only screen and (max-width: 767px) {
+
+    .header {
+
+        max-width: 300px;
+    
+    }
 
 }
