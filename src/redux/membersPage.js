@@ -47,7 +47,6 @@ export const addUserThunk = (member) => (dispatch) => {
     
     addMember(member)
         .then(data => {
-            debugger
             if(!data.error){
                 dispatch(addUser(data))
             }else{
@@ -60,10 +59,8 @@ export const addUserThunk = (member) => (dispatch) => {
 
 export const getSetUsersThunk = (token) => (dispatch) => {
 
-    debugger
     getAllMembers(token)
         .then(data => {
-            debugger
             if(!data.error){
 
                 dispatch(setUsers(data))

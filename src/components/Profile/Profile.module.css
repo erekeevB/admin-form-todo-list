@@ -1,3 +1,13 @@
+.adminPage {
+
+    margin: 0;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+}
+
 .adminPage__header{
 
     display: flex;
@@ -36,7 +46,8 @@
 
     padding: 20px;
     border: 3px solid black;
-    width: 800px;
+    max-width: 800px;
+    min-width: 600px;
     margin: 0 auto;
     margin-top: 60px;
 
@@ -66,16 +77,24 @@
 .userlist__name, .userlist__surname, .userlist__number {
 
     padding: 5px 0;
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
     margin: 0 auto;
     border-bottom: 2px solid gray;
 
 }
 
-.adminPage {
+@media only screen and (max-width: 767px) {
 
-    margin: 0;
-    height: 100vh;
-    background-color: white;
+    .userlist {
+
+        padding: 20px;
+        border: 3px solid black;
+        max-width: 600px;
+        min-width: 300px;
+        margin: 0 auto;
+        margin-top: 60px;
+    
+    }
 
 }

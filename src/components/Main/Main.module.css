@@ -35,6 +35,7 @@ h1, h2, h3{
 .main__forms{
 
     max-width: 400px;
+    padding: 30px;
     grid-row: 1 / -1;
     align-self: start;
     background-color: white;
@@ -62,7 +63,6 @@ h1, h2, h3{
 .main__text h1 {
 
     font-family: 'Piazzolla', serif;
-    font-stretch: wider;
     font-size: 60px;
     padding-top: 80px;
     font-weight: 500;
@@ -82,25 +82,37 @@ h1, h2, h3{
     .main__grid{
 
         max-width: 700px;
-        height: 1020px;
+        height: fit-content;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 500px 1fr 1fr;
+        grid-template-rows: auto 1fr 1fr;
 
     }
 
     .main__forms{
 
         max-width: 400px;
+        margin-bottom: 40px;
         grid-column: 1 / -1;
         grid-row: 1 / 2;
         justify-self: center;
-        align-self: center;
+        align-self: start;
     
     }
 
     .main__text h1 {
 
         font-size: 40px;
+    
+    }
+
+    .main_error {
+        padding: 0;
+    }
+
+    .main__list {
+
+        padding: 20px;
+        height: 200px;
     
     }
 
@@ -110,22 +122,33 @@ h1, h2, h3{
 
     .main__grid{
 
-        max-width: 400px;
+        display: block;
         height: fit-content;
-        grid-template-rows: 500px 1fr 1fr 1fr 1fr;
-        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+        padding-bottom: 30px;
 
     }
 
     .main__forms{
 
-        transform: scale(0.7);
+        transform: scale(0.8);
+        margin: 0 auto;
     
     }
 
     .main__text h1 {
         
         font-size: 40px;
+        margin: 0 20px;
+        padding-top: 50px;
+    
+    }
+
+    .main__text h2 {
+        
+        margin: 0 20px;
+        padding-top: 20px;
     
     }
 
@@ -133,6 +156,10 @@ h1, h2, h3{
 
         padding: 20px;
     
+    }
+
+    .main_error {
+        padding: 0;
     }
 
 }

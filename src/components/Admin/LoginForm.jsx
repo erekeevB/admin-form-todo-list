@@ -4,6 +4,8 @@ import s from './Login.module.css'
 
 const LoginForm = (props) => {
 
+    console.log(props.error)
+    
     return (
 
         <div className={s.adminLoginPage}>
@@ -24,7 +26,8 @@ const LoginForm = (props) => {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         setSubmitting(true);
-                        props.loginUserThunk(values)
+                        props.loginUserThunk(values);
+                        setSubmitting(false);
                     }}
                 >
                     {({ isSubmitting }) => (

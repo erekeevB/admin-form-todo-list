@@ -14,7 +14,6 @@ export const deleteMember = (id) => {
 
 export const getAllMembers = (token) => {
 
-    debugger
     return customAxios.get('api/', {
         headers: {
             "Content-Type" : "application/json",

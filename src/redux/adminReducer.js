@@ -57,9 +57,8 @@ export const loginUserThunk = ({username, password}) => async (dispatch) => {
     const loginpromise = await login(username, password)
         .then(data => {
             
-            if (!data.error) {
+            if (!data.non_field_errors) {
 
-                debugger
                 localStorage.setItem('token', data.key);
                 dispatch(setAuth({error: '', token: data.key}));
 
@@ -67,11 +66,16 @@ export const loginUserThunk = ({username, password}) => async (dispatch) => {
 
                 localStorage.removeItem('token');
                 console.log(data.error + ' login')
-                dispatch(setAuth({ error: data.error, token: '' }));
+                dispatch(setAuth({ error: data.non_field_errors, token: '' }));
 
             }
 
+        }).catch(e => {
+
+            dispatch(setAuth({ error: 'Incorrect Username or Password', token: '' }));
+
         })
+
 
     return loginpromise
 
