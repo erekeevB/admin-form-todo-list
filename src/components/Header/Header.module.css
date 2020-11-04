@@ -188,7 +188,7 @@
 
         display: block;
         text-align: center;
-        height: 0px;
+        max-height: 0px;
         transition: all 0.3s;
         overflow: hidden;
         position: relative;
@@ -198,7 +198,7 @@
     
     .mobile.active{
     
-        height: calc(100vh - 90px);
+        max-height: 400px;
     
     }
     

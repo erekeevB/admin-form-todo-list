@@ -9,12 +9,12 @@ class Profile extends React.Component {
 
     componentDidMount() {
 
-        
-        
+
+
         this.props.getSetUsersThunk(this.props.token);
 
     }
-    
+
     logout = () => {
 
         this.props.logoutThunk();
@@ -23,7 +23,7 @@ class Profile extends React.Component {
 
     render() {
 
-        if(!this.props.token){
+        if (!this.props.token) {
 
             return <Redirect to='/login' />
 
@@ -36,32 +36,36 @@ class Profile extends React.Component {
                 <div className={s.adminPage__header}>
 
                     <NavLink to='/' className={s.redirect}>Негізгі бет</NavLink>
-                    
+
                     <h2>Адамдар список</h2>
 
                     <NavLink to='/' className={s.logout} onClick={() => this.logout(this.props.token)}>Шығу</NavLink>
 
                 </div>
 
-                <div className={s.userlist}>
+                <div className={s.wrapper}>
 
-                    <div className={s.userlist__info}>
+                    <div className={s.userlist}>
 
-                        <div className={s.uselist__infoName}>Аты</div>
-                        <div className={s.uselist__infoSurname}>Жөні</div>
-                        <div className={s.uselist__infoTel}>Номер</div>
+                        <div className={s.userlist__info}>
 
-                    </div>
-                    
-                    {this.props.members ? this.props.members.map((el) => {
+                            <div className={s.uselist__infoName}>Аты</div>
+                            <div className={s.uselist__infoSurname}>Жөні</div>
+                            <div className={s.uselist__infoTel}>Номер</div>
 
-                        return <div className={s.uselist__row}>
-                                <div className={s.userlist__name}>{el.name}</div> 
-                                <div className={s.userlist__surname}>{el.surname}</div> 
+                        </div>
+
+                        {this.props.members ? this.props.members.map((el) => {
+
+                            return <div className={s.uselist__row}>
+                                <div className={s.userlist__name}>{el.name}</div>
+                                <div className={s.userlist__surname}>{el.surname}</div>
                                 <div className={s.userlist__number}> {el.number}</div>
                             </div>
 
-                    }) : <div>Ешқандай адам тіркелмеген</div>}
+                        }) : <div>Ешқандай адам тіркелмеген</div>}
+
+                    </div>
 
                 </div>
 
@@ -73,7 +77,7 @@ class Profile extends React.Component {
 
 const mStP = (state) => {
 
-    return{
+    return {
 
         members: state.members.members,
         username: state.adminPage.username,
@@ -83,4 +87,4 @@ const mStP = (state) => {
 
 }
 
-export default connect(mStP, {getSetUsersThunk, logoutThunk})(Profile);
+export default connect(mStP, { getSetUsersThunk, logoutThunk })(Profile);

@@ -32,13 +32,22 @@
     padding-top: 40px;
     text-decoration: none;
     color: black;
+    transition: all 0.3s;
 
 }
 
 .redirect:hover, .logout:hover{
 
     color: white;
-    background-color: black;
+    background: black;
+
+}
+
+.wrapper {
+
+    margin-top: 60px;
+    display: grid;
+    justify-items: center;
 
 }
 
@@ -48,8 +57,7 @@
     border: 3px solid black;
     max-width: 800px;
     min-width: 600px;
-    margin: 0 auto;
-    margin-top: 60px;
+    margin: 0 20px;
 
 }
 
@@ -88,12 +96,8 @@
 
     .userlist {
 
-        padding: 20px;
-        border: 3px solid black;
         max-width: 600px;
-        min-width: 300px;
-        margin: 0 auto;
-        margin-top: 60px;
+        min-width: 0px;
     
     }
 

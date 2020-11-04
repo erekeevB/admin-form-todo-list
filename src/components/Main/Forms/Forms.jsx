@@ -42,7 +42,8 @@ const Forms = (props) => {
                     <ErrorMessage className={s.error} name="name" component="div" />
 
                     <p className={s.form__inputName}>Телефон нөміріңіз</p>
-                    <Field type="number" name="telNum" placeholder='Телефон нөміріңіз' maxLength="11"/>
+                    <Field type="number" name="telNum" placeholder='Телефон нөміріңіз' maxLength="11" component="input"/>
+                    <ErrorMessage className={s.error} name="telNum" component="div" />
 
                     <div>
                         <button type="submit" disabled={isSubmitting}>
